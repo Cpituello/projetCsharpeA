@@ -7,21 +7,41 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
 
 import { InterestPoint } from '../_models/interestPoint';
-
+import { Category } from '../_models/category';
+import { City } from '../_models/city';
+import { Department } from '../_models/department';
 
 @Injectable()
 export class ApiService {
-  url : string = environment.CSHARP_API_URL+'/api/InterestPoint/';
+  url : string = environment.CSHARP_API_URL+'/api';
   constructor(private http: HttpClient) { }
 
   public getAllInterestPoints(): Observable<InterestPoint[]> {
-    let result: Observable<InterestPoint[]> = this.http.get<InterestPoint[]>(this.url);
+    let result: Observable<InterestPoint[]> = this.http.get<InterestPoint[]>(this.url + '/InterestPoint/');
+    result.catch(this.handleError);
+    return result;
+  }
+
+  public getAllCategories(): Observable<Category[]> {
+    let result: Observable<Category[]> = this.http.get<Category[]>(this.url + '/Category/');
+    result.catch(this.handleError);
+    return result;
+  }
+
+  public getAllCities(): Observable<City[]> {
+    let result: Observable<City[]> = this.http.get<City[]>(this.url + '/City/');
+    result.catch(this.handleError);
+    return result;
+  }
+
+  public getAllDepartments(): Observable<Department[]> {
+    let result: Observable<Department[]> = this.http.get<Department[]>(this.url + '/Department/');
     result.catch(this.handleError);
     return result;
   }
 
   public getInterestPoints(city : string, department : string, category: string): Observable<InterestPoint[]>{
-    var complete_url : string = this.url + "City/" + city + "/Department/" + department + "/Category/" + category;
+    var complete_url : string = this.url + '/InterestPoint/' + "City/" + city + "/Department/" + department + "/Category/" + category;
     let result: Observable<InterestPoint[]> = this.http.get<InterestPoint[]>(complete_url);
     result.catch(this.handleError);
     return result;

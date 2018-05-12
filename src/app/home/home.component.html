@@ -18,7 +18,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let interestPoint of interestPoints; let i=index" (click)="chooseContrat()">
+      <tr *ngFor="let interestPoint of interestPoints; let i=index">
         <th scope="row"> {{interestPoint.id}} </th>
         <td> {{interestPoint.name}} </td>
         <td> {{interestPoint.description}} </td>
@@ -31,7 +31,8 @@
   </table>
 </div>
 
-<div class="container center">
+
+<div class="container">
   <agm-map *ngIf="!interestPoints.length == 0" [latitude]="44.42985726539724" [longitude]="5.9490966796875" [zoom]="8" (mapClick)="onChooseLocation($event)">
       <agm-marker *ngFor="let interestPoint of interestPoints" [latitude]= "interestPoint.address.latitude" [longitude]= "interestPoint.address.longitude" [iconUrl]="iconurl">
           <agm-info-window>
