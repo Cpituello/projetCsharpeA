@@ -14,25 +14,18 @@ export class ApiService {
   url : string = environment.CSHARP_API_URL+'/api/InterestPoint/';
   constructor(private http: HttpClient) { }
 
-  /*
-  public getAllStations(contrat: Contrat): Observable<Station[]> {
-    let result: Observable<Station[]> = this.http.get<Station[]>(API_URL + '/vls/v1/stations?contract='+ contrat.name + '&apiKey=' + API_KEY);
-    result.catch(this.handleError);
-    return result;
-  }*/
-
-  public getAllInterestPoint(): Observable<InterestPoint[]> {
+  public getAllInterestPoints(): Observable<InterestPoint[]> {
     let result: Observable<InterestPoint[]> = this.http.get<InterestPoint[]>(this.url);
     result.catch(this.handleError);
     return result;
   }
 
-  /*
-  public getAllContrats(): Observable<Contrat[]> {
-    let result: Observable<Contrat[]> = this.http.get<Contrat[]>(API_URL + '/vls/v1/contracts?apiKey=' + API_KEY);
+  public getInterestPoints(city : string, department : string, category: string): Observable<InterestPoint[]>{
+    var complete_url : string = this.url + "City/" + city + "/Department/" + department + "/Category/" + category;
+    let result: Observable<InterestPoint[]> = this.http.get<InterestPoint[]>(complete_url);
     result.catch(this.handleError);
     return result;
-  }*/
+  }
 
   private handleError(error: Response | any): Observable<any> {
     let errMsg: string;

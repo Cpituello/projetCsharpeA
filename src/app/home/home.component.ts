@@ -23,10 +23,24 @@ export class HomeComponent implements OnInit {
   iconurl: string = 'http://maps.google.com/mapfiles/ms/icons/yellow-dot.png';
   iconurl2: string = 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png';
 
+  filter: any = {
+    city: "all",
+    department: "all",
+    category: "all"
+  }
+
   constructor(private apiService: ApiService) {}
 
+  public getAllInterestPoints(): void{
+    this.apiService.getAllInterestPoints().subscribe(
+      (interestPoints) => {
+        this.interestPoints = interestPoints;
+      }
+    );
+  }
+
   public getInterestPoints(): void{
-    this.apiService.getAllInterestPoint().subscribe(
+    this.apiService.getInterestPoints(this.filter.city, this.filter.department, this.filter.category).subscribe(
       (interestPoints) => {
         this.interestPoints = interestPoints;
       }
@@ -35,7 +49,7 @@ export class HomeComponent implements OnInit {
 
 
   public ngOnInit(): void {
-    this.getInterestPoints();
+    this.getAllInterestPoints();
   }
 
   public onChooseLocation(event: MouseEvent): void {
