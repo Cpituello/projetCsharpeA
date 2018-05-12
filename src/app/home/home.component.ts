@@ -17,6 +17,9 @@ import { InterestPoint } from '../_models/interestPoint';
 export class HomeComponent implements OnInit {
 
   interestPoints: InterestPoint[] = [];
+
+  latitude: number;
+  longitude: number;
   iconurl: string = 'http://maps.google.com/mapfiles/ms/icons/yellow-dot.png';
   iconurl2: string = 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png';
 
@@ -35,9 +38,11 @@ export class HomeComponent implements OnInit {
     this.getInterestPoints();
   }
 
-
-  chooseContrat() {
-
+  public onChooseLocation(event: MouseEvent): void {
+    this.latitude = event.coords.lat;
+    this.longitude = event.coords.lng;
+    console.log(this.latitude);
+    console.log(this.longitude);
   }
 
 
