@@ -1,0 +1,16 @@
+.jumbotron {
+    background-color: #81dcf7;
+    color: #555555;
+  
+  }
+  
+  
+.table td {
+    text-align: center;   
+    width:65px;
+ }
+ 
+.table th {
+  text-align: center;   
+  width:55px;
+}
