@@ -17,6 +17,8 @@ import { InterestPoint } from '../_models/interestPoint';
 export class HomeComponent implements OnInit {
 
   interestPoints: InterestPoint[] = [];
+  iconurl: string = 'http://maps.google.com/mapfiles/ms/icons/yellow-dot.png';
+  iconurl2: string = 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png';
 
   constructor(private apiService: ApiService) {}
 

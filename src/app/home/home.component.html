@@ -31,4 +31,15 @@
   </table>
 </div>
 
-<!--<app-map [contrat]="contrat" [(stations)]="stations" [(contratChosen)]="contratChosen"></app-map>-->
+<div class="container-fluid">
+  <agm-map *ngIf="!interestPoints.length == 0" [latitude]="interestPoints[0].address.latitude" [longitude]="interestPoints[0].address.longitude" [zoom]="14" (mapClick)="onChooseLocation($event)">
+      <agm-marker *ngFor="let interestPoint of interestPoints" [latitude]= "interestPoint.address.latitude" [longitude]= "interestPoint.address.longitude" [iconUrl]="iconurl">
+          <agm-info-window>
+            <p> <strong>{{interestPoint.name}}</strong></p>
+            <p> {{interestPoint.description }} </p>
+            <p> {{ interestPoint.address.name }}, {{interestPoint.address.postalCode}} {{interestPoint.address.city.name}} </p>
+          </agm-info-window>
+      </agm-marker>
+    </agm-map>
+</div>
+

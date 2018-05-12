@@ -14,3 +14,20 @@
   text-align: center;   
   width:55px;
 }
+
+agm-map {
+  height: 800px;
+  width: 1000px;
+}
+
+.btn {
+  width: 250px;
+}
+
+.style1 {
+  padding-left: 100px;
+}
+
+.style2 {
+  padding-bottom: 50px;
+}
