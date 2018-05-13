@@ -1,4 +1,4 @@
-<div class="margin_top container">
+<div *ngIf="!(categories.length == 0 && cities.length == 0 && departments.length ==0)" class="margin_top container">
   <div class="col-md-4">
     <div class="form-group">
       <label for="category">
@@ -61,7 +61,6 @@
     </agm-marker>
   </agm-map>
 </div>
-
 
 <div *ngIf="interestPoints.length == 0 && activeFilter" class="container jumbotron2 text-center">
   <p><i class="fa fa-exclamation-triangle fa-5x" aria-hidden="true"></i></p>
