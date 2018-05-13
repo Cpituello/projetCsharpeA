@@ -55,7 +55,7 @@
         <p>
           <strong>{{interestPoint.name}}</strong>
         </p>
-        <p><i class="fa fa-comment" aria-hidden="true"></i>&nbsp; {{interestPoint.description }} </p>
+        <p *ngIf="!interestPoint.description == ''"><i class="fa fa-comment" aria-hidden="true"></i>&nbsp; {{interestPoint.description }} </p>
         <p><i class="fa fa-map-signs" aria-hidden="true"></i>&nbsp; {{ interestPoint.address.name }} {{interestPoint.address.postalCode}} {{interestPoint.address.city.name}} </p>
       </agm-info-window>
     </agm-marker>
