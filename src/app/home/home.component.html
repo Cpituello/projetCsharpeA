@@ -27,6 +27,7 @@
   </table>
 </div>
 -->
+
 <div class="container-fluid row">
   <div class="col-md-4">
     <div class="form-group">
@@ -46,27 +47,11 @@
 
   <div class="col-md-4">
     <div class="form-group">
-      <label for="city">
-        Ville
-      </label>
-      <select (change)="changeCity()" [(ngModel)]="citySelected" class="form-control">
-        <option value="all">
-          Toutes
-        </option>
-        <option *ngFor="let city of cities" [value]="city.name">
-          {{city.name}}
-        </option>
-      </select>
-    </div>
-  </div>
-
-  <div class="col-md-4">
-    <div class="form-group">
       <label for="department">
         Département
       </label>
       <select (change)="changeDepartment()" [(ngModel)]="departmentSelected" class="form-control">
-        <option value="all">
+        <option selected value="all">
           Tous
         </option>
         <option *ngFor="let department of departments" [value]="department.name">
@@ -75,6 +60,22 @@
       </select>
     </div>
   </div>
+
+  <div class="col-md-4">
+      <div class="form-group">
+        <label for="city">
+          Ville
+        </label>
+        <select (change)="changeCity()" [(ngModel)]="citySelected" class="form-control">
+          <option selected value="all">
+            Toutes
+          </option>
+          <option *ngFor="let city of cities" [value]="city.name">
+            {{city.name}}
+          </option>
+        </select>
+      </div>
+    </div>
 </div>
 
 
@@ -93,8 +94,8 @@
         <p>
           <strong>{{interestPoint.name}}</strong>
         </p>
-        <p> {{interestPoint.description }} </p>
-        <p> {{ interestPoint.address.name }}, {{interestPoint.address.postalCode}} {{interestPoint.address.city.name}} </p>
+        <p><i class="fa fa-comment" aria-hidden="true"></i>&nbsp; {{interestPoint.description }} </p>
+        <p><i class="fa fa-map-signs" aria-hidden="true"></i>&nbsp; {{ interestPoint.address.name }} {{interestPoint.address.postalCode}} {{interestPoint.address.city.name}} </p>
       </agm-info-window>
     </agm-marker>
   </agm-map>
