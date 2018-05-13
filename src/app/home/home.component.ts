@@ -29,7 +29,6 @@ export class HomeComponent implements OnInit {
 
   latitude: number;
   longitude: number;
-  iconurl: string = 'http://maps.google.com/mapfiles/ms/icons/yellow-dot.png';
 
   filter: any = {
     city: "all",

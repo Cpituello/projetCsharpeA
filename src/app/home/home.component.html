@@ -25,7 +25,7 @@
           Tous
         </option>
         <option *ngFor="let department of departments" [value]="department.name">
-          {{department.name}}
+            ({{department.number}}) {{department.name}}
         </option>
       </select>
     </div>
@@ -50,8 +50,7 @@
 
 <div class="container">
   <agm-map *ngIf="!interestPoints.length == 0" [latitude]="44.42985726539724" [longitude]="5.9490966796875" [zoom]="8">
-    <agm-marker *ngFor="let interestPoint of interestPoints" [latitude]="interestPoint.address.latitude" [longitude]="interestPoint.address.longitude"
-      [iconUrl]="iconurl">
+    <agm-marker *ngFor="let interestPoint of interestPoints" [latitude]="interestPoint.address.latitude" [longitude]="interestPoint.address.longitude">
       <agm-info-window>
         <p>
           <strong>{{interestPoint.name}}</strong>
