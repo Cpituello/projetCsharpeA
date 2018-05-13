@@ -33,6 +33,7 @@ export class HomeComponent implements OnInit {
     department: "all",
     category: "all"
   }
+  activeFilter : boolean = false;
 
   constructor(private apiService: ApiService) {}
 
@@ -86,17 +87,20 @@ export class HomeComponent implements OnInit {
 
   public changeCategory(category:string): void{
     this.filter.category = category;
+    this.activeFilter = true;
     console.log(this.filter.category);
     this.getInterestPoints();
   }
 
   public changeCity(city:string): void{
     this.filter.city = city;
+    this.activeFilter = true;
     this.getInterestPoints();
   }
 
   public changeDepartment(department:string): void{
     this.filter.department = department;
+    this.activeFilter = true;
     this.getInterestPoints();
   }
 

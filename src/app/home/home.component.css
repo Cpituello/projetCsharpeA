@@ -1,7 +1,12 @@
 .jumbotron {
     background-color: #81dcf7;
     color: #555555;
-  
+    
+  }
+.jumbotron2 {
+    background-color: #f78181;
+    color: #555555;
+    height: 800px;
   }
   
   
