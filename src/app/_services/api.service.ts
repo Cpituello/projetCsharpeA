@@ -47,6 +47,15 @@ export class ApiService {
     return result;
   }
 
+  public getCitiesByDepartment(department : string): Observable<City[]>{
+    var complete_url : string = this.url + '/City' + "/Department/" + department;
+    let result: Observable<City[]> = this.http.get<City[]>(complete_url);
+    result.catch(this.handleError);
+    return result;
+  }
+
+
+
   private handleError(error: Response | any): Observable<any> {
     let errMsg: string;
     console.debug('My handleError');

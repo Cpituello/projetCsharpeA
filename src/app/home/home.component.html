@@ -1,38 +1,8 @@
-
-<!--
-<div *ngIf="!interestPoints.length == 0" class=" container">
-<table class="table table-dark table-hover ">
-    <thead>
-      <tr>
-        <th scope="col">Id</th>
-        <th scope="col">Nom</th>
-        <th scope="col">Description</th>
-        <th scope="col">Catégorie</th>
-        <th scope="col">Adresse</th>
-        <th scope="col">Longitude</th>
-        <th scope="col">Latitude</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let interestPoint of interestPoints; let i=index">
-        <th scope="row"> {{interestPoint.id}} </th>
-        <td> {{interestPoint.name}} </td>
-        <td> {{interestPoint.description}} </td>
-        <td> {{interestPoint.category.name}} </td>
-        <td> {{interestPoint.address.name}} </td>
-        <td> {{interestPoint.address.longitude}} </td>
-        <td> {{interestPoint.address.latitude}} </td>
-      </tr>
-    </tbody>
-  </table>
-</div>
--->
-
-<div class="container-fluid row">
+<div class="margin_top container-fluid row">
   <div class="col-md-4">
     <div class="form-group">
       <label for="category">
-        Catégorie
+          <i class="fa fa-book" aria-hidden="true"></i>&nbsp;Catégorie
       </label>
       <select (change)="changeCategory()" [(ngModel)]="categorySelected" class="form-control">
         <option value="all">
@@ -48,10 +18,10 @@
   <div class="col-md-4">
     <div class="form-group">
       <label for="department">
-        Département
+          <i class="fa fa-building" aria-hidden="true"></i>&nbsp;Département
       </label>
       <select (change)="changeDepartment()" [(ngModel)]="departmentSelected" class="form-control">
-        <option selected value="all">
+        <option value="all">
           Tous
         </option>
         <option *ngFor="let department of departments" [value]="department.name">
@@ -64,10 +34,10 @@
   <div class="col-md-4">
       <div class="form-group">
         <label for="city">
-          Ville
+            <i class="fa fa-home" aria-hidden="true"></i>&nbsp;Ville
         </label>
         <select (change)="changeCity()" [(ngModel)]="citySelected" class="form-control">
-          <option selected value="all">
+          <option value="all">
             Toutes
           </option>
           <option *ngFor="let city of cities" [value]="city.name">
@@ -87,7 +57,7 @@
 
 
 <div class="container">
-  <agm-map *ngIf="!interestPoints.length == 0" [latitude]="44.42985726539724" [longitude]="5.9490966796875" [zoom]="8" (mapClick)="onChooseLocation($event)">
+  <agm-map *ngIf="!interestPoints.length == 0" [latitude]="44.42985726539724" [longitude]="5.9490966796875" [zoom]="8">
     <agm-marker *ngFor="let interestPoint of interestPoints" [latitude]="interestPoint.address.latitude" [longitude]="interestPoint.address.longitude"
       [iconUrl]="iconurl">
       <agm-info-window>
@@ -103,7 +73,7 @@
 
 
 <div *ngIf="interestPoints.length == 0 && activeFilter" class="container jumbotron2 text-center">
+  <p><i class="fa fa-exclamation-triangle fa-5x" aria-hidden="true"></i></p>
     <h1 class="display-3">Aucun POI correspondant à la recherche !!
-      <i class="fab fa-accessible-icon"></i>
     </h1>
   </div>

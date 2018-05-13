@@ -9,6 +9,9 @@
     height: 800px;
   }
   
+.margin_top{
+  margin-top: 20px;
+}
   
 .table td {
     text-align: center;   

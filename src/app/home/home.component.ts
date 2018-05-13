@@ -23,14 +23,13 @@ export class HomeComponent implements OnInit {
   cities: City[] = [];
   departments: Department[] = [];
 
-  categorySelected;
-  departmentSelected;
-  citySelected;
+  categorySelected: string = "all";
+  departmentSelected: string = "all";
+  citySelected: string ="all";
 
   latitude: number;
   longitude: number;
   iconurl: string = 'http://maps.google.com/mapfiles/ms/icons/yellow-dot.png';
-  iconurl2: string = 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png';
 
   filter: any = {
     city: "all",
@@ -89,6 +88,14 @@ export class HomeComponent implements OnInit {
     );
   }
 
+  public getCitiesByDepartment(): void{
+    this.apiService.getCitiesByDepartment(this.filter.department).subscribe(
+      (cities) => {
+        this.cities = cities;
+      }
+    );
+  }
+
   public changeCategory(): void{
     this.filter.category = this.categorySelected;
     this.activeFilter = true;
@@ -104,19 +111,10 @@ export class HomeComponent implements OnInit {
   public changeDepartment(department:string): void{
     this.filter.department = this.departmentSelected;
     this.activeFilter = true;
+    this.getCitiesByDepartment();
+    this.citySelected = "all";
+    this.filter.city = this.citySelected;
     this.getInterestPoints();
   }
-
-
-
-
-  public onChooseLocation(event: MouseEvent): void {
-    this.latitude = event.coords.lat;
-    this.longitude = event.coords.lng;
-    console.log(this.latitude);
-    console.log(this.longitude);
-  }
-
-
 
 }
