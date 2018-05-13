@@ -33,7 +33,7 @@
       <label for="category">
         Catégorie
       </label>
-      <select id="category" name="category" (change)="changeCategory($event.target.value)" [(ngModel)]="category" class="form-control">
+      <select (change)="changeCategory()" [(ngModel)]="categorySelected" class="form-control">
         <option value="all">
           Toutes
         </option>
@@ -49,7 +49,7 @@
       <label for="city">
         Ville
       </label>
-      <select id="city" name="city" (change)="changeCity($event.target.value)" [(ngModel)]="city" class="form-control">
+      <select (change)="changeCity()" [(ngModel)]="citySelected" class="form-control">
         <option value="all">
           Toutes
         </option>
@@ -65,7 +65,7 @@
       <label for="department">
         Département
       </label>
-      <select id="department" name="department" (change)="changeDepartment($event.target.value)" [(ngModel)]="department" class="form-control">
+      <select (change)="changeDepartment()" [(ngModel)]="departmentSelected" class="form-control">
         <option value="all">
           Tous
         </option>

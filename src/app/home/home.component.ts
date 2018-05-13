@@ -23,6 +23,10 @@ export class HomeComponent implements OnInit {
   cities: City[] = [];
   departments: Department[] = [];
 
+  categorySelected;
+  departmentSelected;
+  citySelected;
+
   latitude: number;
   longitude: number;
   iconurl: string = 'http://maps.google.com/mapfiles/ms/icons/yellow-dot.png';
@@ -85,21 +89,20 @@ export class HomeComponent implements OnInit {
     );
   }
 
-  public changeCategory(category:string): void{
-    this.filter.category = category;
+  public changeCategory(): void{
+    this.filter.category = this.categorySelected;
     this.activeFilter = true;
-    console.log(this.filter.category);
     this.getInterestPoints();
   }
 
   public changeCity(city:string): void{
-    this.filter.city = city;
+    this.filter.city = this.citySelected;
     this.activeFilter = true;
     this.getInterestPoints();
   }
 
   public changeDepartment(department:string): void{
-    this.filter.department = department;
+    this.filter.department = this.departmentSelected;
     this.activeFilter = true;
     this.getInterestPoints();
   }
